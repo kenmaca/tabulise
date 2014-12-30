@@ -1,11 +1,9 @@
 class Block():
-    """
-    This is an abstract class.  Do not instantiate!
-    """
+    ''' This is an abstract class.  Do not instantiate! '''
+    
     def __init__(self, id, course, timeslot):
-        """
-        (Class, str, str, TimeSlot) -> Class
-        """
+        ''' (Class, str, str, TimeSlot) -> Class '''
+        
         self._id = id
         self._course = course
         self._time = timeslot
