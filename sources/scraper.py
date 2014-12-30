@@ -1,4 +1,7 @@
 import requests
 
 class Scraper:
-    ''' A basic scraper 
+    ''' An abstract Scraper. '''
+    
+    def __init__(self):
+        pass

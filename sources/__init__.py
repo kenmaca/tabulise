@@ -7,3 +7,5 @@ for subdir in ["/.."]:
     if not (path + subdir) in sys.path:
         sys.path.insert(0, os.path.abspath(path + subdir))
 del subdir
+
+import exceptions
