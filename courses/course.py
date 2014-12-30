@@ -50,7 +50,7 @@ class Course():
         (Course, set of Practical) -> NoneType
         Set the practical sections for this Course.
         """
-        self._practicals = practical
+        self._practicals = practicals
 
         
     
