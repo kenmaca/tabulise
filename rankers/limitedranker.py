@@ -3,9 +3,9 @@ Created on Dec 30, 2014
 
 @author: Kirisanth
 '''
-from absoptimize import AbsOptimize
+from absranker import * 
 
-class LimitedOptimize(AbsOptimize):
+class LimitedRanker(AbsRanker):
     '''
     classdocs
     '''
@@ -15,9 +15,9 @@ class LimitedOptimize(AbsOptimize):
         '''
         (Set of Course) -> NoneType
         '''
-        AbsOptimize.__init__(courses)
+        AbsRanker.__init__(self, courses)
     
-    def _comparekey(self, x):
+    def _comparekey(x):
         '''
         (Course) -> (int, int)
         Comparator for courses.
