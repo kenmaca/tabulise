@@ -14,7 +14,7 @@ class TimeSlot():
         (TimeSlot) -> str
         Return a string representation of the TimeSlot in the form "DAY HH:MM->DAY HH:MM S"
         """
-        return self._start + "->" + self._end + " " + self._semester
+        return "%s%s%s %s" % (self._start, "->", self._end, self._semester)
     
     def getStart(self):
         """
