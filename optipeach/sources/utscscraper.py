@@ -1,8 +1,8 @@
-from optipeach.sources.scraper import Scraper
-from optipeach.courses.lecture import Lecture
-from optipeach.courses.tutorial import Tutorial
-from optipeach.courses.practical import Practical
-from optipeach.courses.timeslot import TimeSlot
+from . scraper import Scraper
+from .. courses.lecture import Lecture
+from .. courses.tutorial import Tutorial
+from .. courses.practical import Practical
+from .. courses.timeslot import TimeSlot
 import requests
 import csv
 

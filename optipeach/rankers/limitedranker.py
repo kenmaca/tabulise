@@ -3,7 +3,7 @@ Created on Dec 30, 2014
 
 @author: Kirisanth
 '''
-from absranker import * 
+from . absranker import *
 
 class LimitedRanker(AbsRanker):
     '''
