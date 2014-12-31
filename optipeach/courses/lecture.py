@@ -1,5 +1,4 @@
-from block import Block
-
+from optipeach.courses.block import Block
 
 class Lecture(Block):
     pass

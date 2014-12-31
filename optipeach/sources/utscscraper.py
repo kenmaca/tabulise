@@ -1,8 +1,8 @@
-import scraper
-from lecture import *
-from tutorial import *
-from practical import *
-from timeslot import *
+from optipeach.sources.scraper import Scraper
+from optipeach.courses.lecture import Lecture
+from optipeach.courses.tutorial import Tutorial
+from optipeach.courses.practical import Practical
+from optipeach.courses.timeslot import TimeSlot
 import requests
 import csv
 
@@ -19,7 +19,7 @@ TIMESLOT_CURRENT_YEAR = '2014'
 TIMESLOT_DAY_FORMAT = '%s %s'
 TIMESLOT_SEMESTER_FORMAT = '%s%s' + TIMESLOT_CURRENT_YEAR
 
-class UTSCScraper(scraper.Scraper):
+class UTSCScraper(Scraper):
     ''' A scraper used to pull all courses from the UTSC Registrar's Office
     Course listing page found at 
     https://www.utsc.utoronto.ca/~registrar/scheduling/timetable. '''
