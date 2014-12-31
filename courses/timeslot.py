@@ -3,8 +3,8 @@ class TimeSlot():
         """
         (TimeSlot, str, str, str) -> TimeSlot
         REQ: start and end must be formatted in 24 hour time beginning with
-        the first 2 letters of the day (eg. "TU 12:00") and semester should be of the
-        form "YYYY-MM YYYY-MM"
+        the first 2 letters of the day (eg. "TU 12:00") and semester should match
+        timeslots occurring in the same semester.
         """
         self._start = start
         self._end = end
