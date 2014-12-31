@@ -20,8 +20,8 @@ class Block():
     
     def getCourse(self):
         """
-        (Block) -> Course
-        Return the Course to which this class belongs.
+        (Block) -> str
+        Return the course to which this class belongs.
         """
         return self._course
     
@@ -48,8 +48,8 @@ class Block():
         
     def setCourse(self, course):
         """
-        (Block, Course) -> NoneType
-        Set the Course to which this Block belongs.
+        (Block, str) -> NoneType
+        Set the course to which this Block belongs.
         """
         self._course = course
         
