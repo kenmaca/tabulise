@@ -2,7 +2,7 @@
 
 import optipeach
 
-# get all CSC Courses
-b = optipeach.UTSCScraper.pullAllBlocks(['CSC'])
+# get all Courses
+b = optipeach.UTSCScraper.pullBlocks('', '')
 s = optipeach.blocksToCourses(b)
 print(s)
