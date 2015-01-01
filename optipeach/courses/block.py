@@ -10,6 +10,11 @@ class Block():
         self._course = course
         self._time = timeslot
         self._origin = origin
+
+    def __repr__(self):
+        ''' (Block) -> str '''
+
+        return self.getCourse() + ' ' + self.getId()
         
     def getId(self):
         """
