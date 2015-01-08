@@ -84,10 +84,12 @@ class Course():
         appropriately. Appropriately refers to adding Lectures in the
         proper Section based on Lecture.getId()
         '''
+        #checking if section is already present
         if lecture.getId() in self._sections:
             print("HEY")
             self._sections[lecture.getId()].add(lecture)
         else:
+            #creating a new section if needed
             self.addSection({lecture})
 
     def addTutorial(self, tutorial):

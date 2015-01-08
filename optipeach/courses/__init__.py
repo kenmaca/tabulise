@@ -1,4 +1,4 @@
-__all__ = ['course', 'lecture', 'tutorial', 'practical', 'timeslot']
+__all__ = ['course', 'lecture', 'tutorial', 'practical', 'timeslot', 'schedule']
 
 from . course import *
 from . lecture import *
