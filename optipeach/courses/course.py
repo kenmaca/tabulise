@@ -1,11 +1,13 @@
 class Course():
     def __init__(self, sections, tutorials, practicals, code):
         """
-        (Course, list of list of Lecture, list of Tutorial, list of Practical, 
+        (Course, dict of string and set of Lecture, set of Tutorial, set of Practical, 
         str) -> Course
+        sections should be of the form {"CSCA08": someLecture}
         """
 
         # You can't have sets of sets! Changed this to all lists!
+        # Dictionaries are nice
         self._sections = sections
         self._tutorials = tutorials
         self._practicals = practicals
@@ -20,7 +22,7 @@ class Course():
         
     def getSections(self):
         """
-        (Course) -> list of list of Lecture
+        (Course) -> dict of string and set of Lecture
         Return the lecture sections for this Course.
         (Each list within the list is a lecture section.)
         """
@@ -28,14 +30,14 @@ class Course():
     
     def getTutorials(self):
         """
-        (Course) -> list of Tutorial
+        (Course) -> set of Tutorial
         Return the tutorial sections for this Course.
         """
         return self._tutorials
     
     def getPracticals(self):
         """
-        (Course) -> list of Practical
+        (Course) -> set of Practical
         Return the practical sections for this Course.
         """
         return self._practicals
@@ -49,7 +51,7 @@ class Course():
     
     def setSections(self, sections):
         """
-        (Course, list of list of Lecture) -> NoneType
+        (Course, dict of string and set of Lecture) -> NoneType
         Set the lecture sections for this Course.
         (Each list within the list is a lecture section.)
         """
@@ -57,53 +59,47 @@ class Course():
         
     def setTutorials(self, tutorials):
         """
-        (Course, list of Tutorial) -> NoneType
+        (Course, set of Tutorial) -> NoneType
         Set the tutorial sections for this Course.
         """
         self._tutorials = tutorials
         
     def setPracticals(self, practicals):
         """
-        (Course, list of Practical) -> NoneType
+        (Course, set of Practical) -> NoneType
         Set the practical sections for this Course.
         """
         self._practicals = practicals
 
     def addSection(self, section):
-        ''' (Course, list of list of Lecture) -> NoneType
+        ''' (Course, set of Lecture) -> NoneType
         Adds a section to the section list.
         '''
 
-        self._sections.append(section)
+        self._sections[next(iter(section)).getId()] = section
 
     def addLecture(self, lecture):
         ''' (Course, Lecture) -> NoneType
-        Adds a Lecture to the list of list of Lecture (the Section list)
+        Adds a Lecture to the dict of string and set of Lecture (the Section list)
         appropriately. Appropriately refers to adding Lectures in the
         proper Section based on Lecture.getId()
         '''
-
-        for section in self._sections:
-            
-            # assumes that integrity of the section list is solid, so
-            # all we need to check is the first Lecture in this section
-            if section[0].getId() == lecture.getId():
-                section.append(lecture)
-                return
-
-        # section doesn't exist, so make it
-        self.addSection([lecture])
+        if lecture.getId() in self._sections:
+            print("HEY")
+            self._sections[lecture.getId()].add(lecture)
+        else:
+            self.addSection({lecture})
 
     def addTutorial(self, tutorial):
         ''' (Course, Tutorial) -> NoneType
         Adds a Tutorial to this Course.
         '''
 
-        self._tutorials.append(tutorial)
+        self._tutorials.add(tutorial)
 
     def addPractical(self, practical):
         ''' (Course, Practical) -> NoneType
         Adds a Practical to this Course.
         '''
 
-        self._practicals.append(practical)
+        self._practicals.add(practical)
