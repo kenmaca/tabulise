@@ -5,3 +5,4 @@ from . lecture import *
 from . tutorial import *
 from . practical import *
 from . timeslot import *
+from . schedule import *
