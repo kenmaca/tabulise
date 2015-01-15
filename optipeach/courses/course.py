@@ -1,4 +1,8 @@
 class Course():
+    
+    """This class represents a course in terms of the lecture sections, tutorials, and
+    practicals that are part of this course."""
+    
     def __init__(self, sections, tutorials, practicals, code):
         """
         (Course, dict of string and set of Lecture, set of Tutorial, set of Practical, 

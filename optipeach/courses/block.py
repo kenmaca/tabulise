@@ -4,6 +4,7 @@ from .. exceptions import DuplicateBlockError
 class Block():
     """
     This is an abstract class.  Do not instantiate!
+    This represents a single event (recurring) on a weekly schedule.
     """
     
     _block_list = set()

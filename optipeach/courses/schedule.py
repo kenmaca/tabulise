@@ -1,6 +1,10 @@
 from .. exceptions import ConflictingEventError
 
 class Schedule():
+    
+    """Represents a weekly schedule while keeping track of currently scheduled events and
+    notifying the user when an event cannot be scheduled due to a conflicting event."""
+    
     def __init__(self):
         """
         (Schedule) -> NoneType

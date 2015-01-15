@@ -2,6 +2,9 @@ from .. exceptions import InvalidTimeError
 
 
 class TimeSlot():
+    
+    """Represents a period of time in a weekly schedule."""
+    
     def __init__(self, start, end, semester):
         """
         (TimeSlot, str, str, str) -> TimeSlot
