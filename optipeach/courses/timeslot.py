@@ -1,4 +1,4 @@
-from .. exceptions.invalidtime import InvalidTime
+from .. exceptions import InvalidTimeError
 
 
 class TimeSlot():
@@ -76,8 +76,8 @@ class TimeSlot():
             return False
         return True
 
-    @classmethod            
-    def _startsBefore(self, time, time2):
+    @staticmethod            
+    def _startsBefore(time, time2):
         """
         (TimeSlot, str, str) -> bool
         Return True if time happens before time2
@@ -113,8 +113,8 @@ class TimeSlot():
         
         
     
-    @classmethod
-    def _checkTime(self, time):
+    @staticmethod
+    def _checkTime(time):
         """
         (TimeSlot, str) -> bool
         Return True if the time is in a valid format.

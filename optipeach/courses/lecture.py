@@ -1,4 +1,6 @@
-from . block import Block
+from . schoolsession import SchoolSession
 
-class Lecture(Block):
-    pass
+class Lecture(SchoolSession):
+    def __init__(self, section, timeslot, origin, course):
+        super(Lecture, self).__init__(section, timeslot, origin, course, 
+                                      section + course + repr(timeslot))

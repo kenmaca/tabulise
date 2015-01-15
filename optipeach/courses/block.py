@@ -1,15 +1,21 @@
+from .. exceptions import DuplicateBlockError
+
+
 class Block():
     """
     This is an abstract class.  Do not instantiate!
     """
-    def __init__(self, id, course, timeslot, origin):
+    
+    _block_list = set()
+    
+    def __init__(self, id, timeslot, origin):
         """
-        (Block, str, str, TimeSlot, str) -> Block
+        (Block, str, str, TimeSlot, str) -> NoneType
         """
         self._id = id
-        self._course = course
         self._time = timeslot
         self._origin = origin
+        Block.addBlock(id)
 
     def __repr__(self):
         ''' (Block) -> str '''
@@ -22,13 +28,6 @@ class Block():
         Return the id of this Block.
         """
         return self._id
-    
-    def getCourse(self):
-        """
-        (Block) -> str
-        Return the course to which this class belongs.
-        """
-        return self._course
     
     def getTime(self):
         """
@@ -51,13 +50,6 @@ class Block():
         """
         self._id = id
         
-    def setCourse(self, course):
-        """
-        (Block, str) -> NoneType
-        Set the course to which this Block belongs.
-        """
-        self._course = course
-        
     def setTime(self, time):
         """
         (Block, str) -> NoneType
@@ -71,3 +63,14 @@ class Block():
         Set the origin of this Block.
         """
         self._origin = origin
+        
+    @staticmethod
+    def addBlock(block_id):
+        """
+        (Block) -> NoneType
+        Add the block to the static list of blocks.
+        """
+        if block_id in Block._block_list:
+            raise DuplicateBlockError("A block with the same ID already exists!")
+        else:
+            Block._block_list.add(block_id)

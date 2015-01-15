@@ -1,4 +1,4 @@
-from .. exceptions.conflictingevent import ConflictingEvent
+from .. exceptions import ConflictingEventError
 
 class Schedule():
     def __init__(self):
