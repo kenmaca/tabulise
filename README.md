@@ -1,4 +1,4 @@
-enrollingpin
+tabulise
 ============
 
 UofT Course Timetable Generator
