@@ -3,7 +3,6 @@ from .. courses.lecture import Lecture
 from .. courses.tutorial import Tutorial
 from .. courses.practical import Practical
 from .. courses.timeslot import TimeSlot
-import requests
 import csv
 
 # two placeholders % (first % is discipline, second is session)
@@ -22,10 +21,11 @@ TIMESLOT_SEMESTER_FORMAT = '%s%s' + TIMESLOT_CURRENT_YEAR
 class UTSCScraper(Scraper):
     ''' A scraper used to pull all courses from the UTSC Registrar's Office
     Course listing page found at 
-    https://www.utsc.utoronto.ca/~registrar/scheduling/timetable. '''
+    https://www.utsc.utoronto.ca/~registrar/scheduling/timetable.
+    '''
     
-    @classmethod
-    def pullAllBlocks(cls, disciplines, sessions = ['summer', 'year']):
+    @staticmethod
+    def pullAllBlocks(disciplines, sessions = ['summer', 'year']):
         ''' (list of str[, list of str]) -> list of Block
         Grabs all available Blocks from the Course listing page. Each Block
         represents either a lecture, tutorial, or practical timeslot.
@@ -38,22 +38,23 @@ class UTSCScraper(Scraper):
         
         # outer listcomp used to flatten 2d list, inner for cartesian product
         # of disciplines and sessions
-        return [block for block_list in 
-                [cls.pullBlocks(discipline, session) for discipline in 
-                 disciplines for session in sessions] for block in block_list]
+        return ([block for block_list in 
+                [UTSCScraper.pullBlocks(discipline, session) 
+                for discipline in disciplines for session in sessions] 
+                for block in block_list])
     
-    @classmethod
-    def pullBlocks(cls, discipline, session):
+    @staticmethod
+    def pullBlocks(discipline, session):
         ''' (str, str) -> list of Block
         Grabs all Blocks from a certain discipline and session.
         '''
         
         # cut off the header line
-        return [cls.toBlock(line, session) for line in 
-                super(UTSCScraper, cls).pull(URL % (discipline, session))[1:]]
+        return ([UTSCScraper.toBlock(line, session) for line in 
+                Scraper.pull(URL % (discipline, session))[1:]])
     
-    @classmethod
-    def toBlock(cls, line, session):
+    @staticmethod
+    def toBlock(line, session):
         ''' (str, session) -> Block
         Converts a single CSV line to a respective Block object.
         
@@ -77,7 +78,7 @@ class UTSCScraper(Scraper):
                 'TUT': Tutorial, 
                 'T01': Tutorial, 
                 'PRA': Practical
-                }[block_data[1].strip()[:3]](block_data[1], block_data[0][:-2], 
+                }[block_data[1].strip()[:3]](block_data[1], 
                                              TimeSlot(TIMESLOT_DAY_FORMAT % 
                                                       (block_data[3], 
                                                        block_data[4]), 
@@ -87,4 +88,4 @@ class UTSCScraper(Scraper):
                                                       TIMESLOT_SEMESTER_FORMAT %
                                                       (session, 
                                                        block_data[0][-1])), 
-                                             block_data)
+                                             block_data, block_data[0][:-2])

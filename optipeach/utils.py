@@ -19,7 +19,9 @@ def blocksToCourses(blocks):
 		 Tutorial: c.addTutorial, 
 		 Practical: c.addPractical}[type(block)](block)
 
-		# add the modified Course back into the dict
+		# add the modified Course back into the dict (you may think this is
+		# unnessecary since c is just a reference, but it's for new Course
+		# creation.. the Course([], []..) part)
 		courses[block.getCourse()] = c
 
 	return courses
